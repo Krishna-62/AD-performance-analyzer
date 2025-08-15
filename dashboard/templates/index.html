@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Performance Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ad Performance Analyzer Dashboard</h1>
+        </header>
+
+        <section class="upload-section">
+            <h2>Upload CSV File</h2>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv" required>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        {% if data %}
+        <section class="data-preview">
+            <h2>Processed Data</h2>
+            <div class="data-table">
+                {{ data | safe }}
+            </div>
+        </section>
+        {% endif %}
+
+        <footer>
+            <p>&copy; 2025 Ad Performance Analyzer</p>
+        </footer>
+    </div>
+</body>
+</html>
